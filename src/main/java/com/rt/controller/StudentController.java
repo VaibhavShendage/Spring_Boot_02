@@ -54,9 +54,9 @@ public class StudentController {
 	//----------------------Select By Name--------------------------------
 	
 	@GetMapping("/name/{name}")
-	public Student getStdByName(@PathVariable String name){
+	public List<Student> getStdByName(@PathVariable String name){
 		
-      Student st = ss .getStdByName(name);
+     List<Student> st = ss .getStdByName(name);
 		
 		return st;
 	}
