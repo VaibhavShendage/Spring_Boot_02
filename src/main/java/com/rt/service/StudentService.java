@@ -56,9 +56,11 @@ public class StudentService {
 		return list;
 	}
 	//--------------------GetDataBy Name----------------------
-	public Student getStdByName(String name) {
+	public List<Student> getStdByName(String name) {
 		
-		Student list = Dao.findByName(name); 
+	/*List<Student>list = Dao.findByName(name); */
+		
+		List<Student>list = Dao.abc(name); 
 		return list;
 	}
 	
