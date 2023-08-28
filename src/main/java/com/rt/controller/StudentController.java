@@ -3,6 +3,8 @@ package com.rt.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,11 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rt.entities.Student;
 import com.rt.service.StudentService;
-
+//@PropertySource(value = "classpath:Student_properties")
 @RestController
 public class StudentController {
 	@Autowired
 	StudentService ss;
+	
+	@Value("${message}")
+	private String msg;
+	
+	@Value("${welmessage}")
+	private String msgs;
+	
 	
 	@PostMapping("/Student")
 	public String AddStd(@RequestBody Student st){
@@ -31,7 +40,7 @@ public class StudentController {
 	public Student getStdById(@PathVariable int id){
 		
       Student st = ss.getStdById(id);
-		
+		System.out.println(msg);
 		return st;
 	}
 	//----------------------Delete-------------------------
@@ -57,7 +66,7 @@ public class StudentController {
 	public List<Student> getStdByName(@PathVariable String name){
 		
      List<Student> st = ss .getStdByName(name);
-		
+     System.out.println(msgs);
 		return st;
 	}
 	//--------------------SelectAll----------------------------------------
